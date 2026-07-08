@@ -1,0 +1,11 @@
+Hello from TorrentX!
+
+This file is the payload of sample/hello.torrent. It exists so the
+info and verify commands can be demonstrated without downloading
+anything:
+
+    TorrentX info   sample/hello.torrent
+    TorrentX verify sample/hello.torrent -o sample
+
+TorrentX is a BitTorrent-compatible peer-to-peer file distribution
+engine written in C++17 on top of libcurl and OpenSSL.
