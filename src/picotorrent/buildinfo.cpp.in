@@ -1,0 +1,23 @@
+#include "buildinfo.hpp"
+
+using pt::BuildInfo;
+
+const char* BuildInfo::branch()
+{
+    return "@GITVERSION_VAR_BRANCHNAME@";
+}
+
+const char* BuildInfo::commitish()
+{
+    return "@GITVERSION_VAR_SHORTSHA@";
+}
+
+const char* BuildInfo::semver()
+{
+    return "@GITVERSION_VAR_SEMVER@";
+}
+
+const char* BuildInfo::version()
+{
+    return "@GITVERSION_VAR_VERSION@";
+}

@@ -1,0 +1,39 @@
+name: CI
+on:
+  pull_request:
+  push:
+    branches:
+      - feature/**
+      - master
+
+jobs:
+  build:
+    name: Build
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        arch: [x86, x64]
+        os: [windows-latest]
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Git
+        run: |
+          git fetch --prune --unshallow
+          git submodule update --init --recursive
+
+      - name: Restore .NET tools
+        run: dotnet tool restore
+
+      - name: Build
+        run: dotnet cake --platform=${{ matrix.arch }} --target=Publish --vcpkg-triplet=${{ matrix.arch }}-windows-static-md-rel
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: PicoTorrent-${{ matrix.arch }}-CI-binaries
+          path: |
+            build-${{ matrix.arch }}/Release/packages/PicoTorrent-*-${{ matrix.arch }}.exe
+            build-${{ matrix.arch }}/Release/packages/PicoTorrent-*-${{ matrix.arch }}.zip
+            build-${{ matrix.arch }}/Release/packages/PicoTorrent-*-${{ matrix.arch }}.symbols.zip
