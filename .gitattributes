@@ -1,5 +1,5 @@
-# Auto detect text files and perform LF normalization 
+# Auto detect text files and perform LF normalization
 * text=auto
 
-src/breakpad/* linguist-vendored
-src/sqlite/* linguist-vendored
+# Torrent files are binary bencode data
+*.torrent binary

@@ -1,19 +1,13 @@
-build-x64/
-build-x86/
+# Build directories
 build/
-docs/build
-src/installer/bin
-src/installer/obj
-src/picotorrent/buildinfo.cpp
-tools
-.vscode
-[D|d]ebug
-[R|r]elease
-.vendor-status
+build-*/
+cmake-build-*/
 
-.vs
-*.db
-*.opendb
-*.suo
-*.sdf
+# IDE / editor
+.vs/
+.vscode/
+.idea/
 *.user
+
+# Downloaded torrent payloads created while testing
+downloads/
